@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Сайт</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="style.css">
+<?php include "header.php" ?>
+</head>
+<body>
+	<div class="add">
+		<div class = "leftblock">
+	
+			<?php
+			require_once 'include/db.php'; // подключаем скрипт
+			 
+			// подключаемся к серверу
+			$link = mysqli_connect($host, $user, $password, $database) 
+			    or die("Ошибка " . mysqli_error($link));
+			 
+			// выполняем операции с базой данных
+			$query ="SHOW TABLES FROM $database";
+			$result = mysqli_query($link, $query) or die("Ошибка " . mysqli_error($link)); 
+			if($result)
+			{
+			    echo "Выполнение запроса прошло успешно";
+			}
+			while ($row = mysql_fetch_row($result)) {
+			    echo "Таблица: {$row[0]}\n";
+
+			// закрываем подключение
+			mysqli_close($link);
+			?>
+		</div>
+		<div class = "content">
+		Контент</br>Контент</br>Контент</br>Контент</br>Контент</br>Контент</br>Контент</br>Контент</br>Контент</br>Контент</br>
+		</div>
+	</div>
+</body>
+
+    </script>
+</body>
+
+</html>
